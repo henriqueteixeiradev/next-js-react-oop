@@ -30,7 +30,10 @@ export function CreateProducts() {
       saveProduct(new ImportedProduct(type, name, price, fee));
     }
 
-    console.log(type, name, price, fee, discount);
+    setType(ProductType.Common);
+    setName("");
+    setPrice(0);
+    setFee(0);
   };
 
   const changeSelectItem = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -44,8 +47,6 @@ export function CreateProducts() {
 
     setType(target.value);
   };
-
-  console.log("type", type);
 
   return (
     <S.Form onSubmit={handleSubmith}>
@@ -70,19 +71,29 @@ export function CreateProducts() {
         onChange={(event) => setPrice(parseFloat(event.currentTarget.value))}
       />
 
-      <label htmlFor="fee">Taxa do Produo</label>
-      <input
-        value={fee}
-        name="fee"
-        onChange={(event) => setFee(parseFloat(event.currentTarget.value))}
-      />
+      {type.toString() === ProductType.Imported.toPrecision() && (
+        <>
+          <label htmlFor="fee">Taxa do Produo</label>
+          <input
+            value={fee}
+            name="fee"
+            onChange={(event) => setFee(parseFloat(event.currentTarget.value))}
+          />
+        </>
+      )}
 
-      <label htmlFor="discount">Desconto do Produto</label>
-      <input
-        value={discount}
-        name="discount"
-        onChange={(event) => setDiscount(parseFloat(event.currentTarget.value))}
-      />
+      {type.toString() === ProductType.Used.toString() && (
+        <>
+          <label htmlFor="discount">Desconto do Produto</label>
+          <input
+            value={discount}
+            name="discount"
+            onChange={(event) =>
+              setDiscount(parseFloat(event.currentTarget.value))
+            }
+          />
+        </>
+      )}
 
       <button type="submit">Cadastrar</button>
     </S.Form>
