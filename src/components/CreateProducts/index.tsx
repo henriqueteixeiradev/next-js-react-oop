@@ -2,8 +2,13 @@ import React, { ChangeEvent, SyntheticEvent, useState } from "react";
 import * as S from "./styles";
 
 import { ProductType } from "../../hooks/types";
+import { useProduct } from "../../hooks/useProductContext";
+import Product from "../../classes/Product";
+import UsedProduct from "../../classes/UsedProduct";
+import ImportedProduct from "../../classes/ImportedProduct";
 
 export function CreateProducts() {
+  const { saveProduct } = useProduct();
   const [type, setType] = useState<ProductType>(ProductType.Common);
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
@@ -12,6 +17,18 @@ export function CreateProducts() {
 
   const handleSubmith = (event: SyntheticEvent) => {
     event.preventDefault();
+
+    if (type.toString() === ProductType.Common.toString()) {
+      saveProduct(new Product(type, name, price));
+    }
+
+    if (type.toString() === ProductType.Used.toString()) {
+      saveProduct(new UsedProduct(type, name, price, discount));
+    }
+
+    if (type.toString() === ProductType.Imported.toString()) {
+      saveProduct(new ImportedProduct(type, name, price, fee));
+    }
 
     console.log(type, name, price, fee, discount);
   };
