@@ -1,5 +1,5 @@
 import Product from "./Product";
-import { ProductType } from "../modules/types";
+import { ProductType } from "../hooks/types";
 
 class ImportedProduct extends Product {
   private _fee: number;

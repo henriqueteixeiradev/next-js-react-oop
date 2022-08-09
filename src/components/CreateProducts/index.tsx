@@ -1,7 +1,7 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from "react";
 import * as S from "./styles";
 
-import { ProductType } from "../../modules/types";
+import { ProductType } from "../../hooks/types";
 
 export function CreateProducts() {
   const [type, setType] = useState<ProductType>(ProductType.Common);

@@ -1,4 +1,4 @@
-import { ProductType } from "../modules/types";
+import { ProductType } from "../hooks/types";
 
 class Product {
   private _type: ProductType;
