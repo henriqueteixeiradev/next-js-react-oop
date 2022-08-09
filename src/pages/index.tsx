@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
-import { Main } from "../modules/Main";
+import { Main } from "../modules";
+
 
 const Home: NextPage = () => {
   return <Main />;

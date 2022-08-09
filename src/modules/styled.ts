@@ -6,6 +6,5 @@ export const Container = styled.div`
     grid-template-columns: 40% 60%;
     height: 100%;
     min-height: 100vh;
-    background-color: rebeccapurple;
   `}
 `;

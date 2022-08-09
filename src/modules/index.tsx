@@ -1,6 +1,6 @@
 import React from "react";
-import { CreateProducts } from "../../components/CreateProducts";
-import { ProductsList } from "../../components/ProductsList";
+import { CreateProducts } from "../components/CreateProducts";
+import { ProductsList } from "../components/ProductsList";
 
 import * as S from "./styled";
 
